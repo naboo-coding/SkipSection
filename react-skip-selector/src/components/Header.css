@@ -1,0 +1,79 @@
+.header {
+  background: #18191a;
+  padding: 32px 0 0 0;
+}
+
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.stepper::-webkit-scrollbar {
+  display: none;
+}
+
+.stepper-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b0b3b8;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  padding: 0 16px;
+  transition: color 0.2s, font-weight 0.2s;
+  white-space: nowrap;
+}
+
+.stepper-step.active {
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.stepper-icon {
+  font-size: 1.3rem;
+}
+
+.stepper-label {
+  margin-right: 4px;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.stepper-divider {
+  width: 32px;
+  height: 2px;
+  background: #232323;
+  border-radius: 2px;
+  margin: 0 8px;
+  display: inline-block;
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding: 18px 0 0 0;
+  }
+  .stepper {
+    gap: 0;
+    margin-bottom: 18px;
+    padding: 0 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .stepper-step {
+    font-size: 0.98rem;
+    padding: 0 8px;
+  }
+  .stepper-label {
+    font-size: 0.98rem;
+  }
+  .stepper-divider {
+    width: 18px;
+    margin: 0 4px;
+  }
+} 

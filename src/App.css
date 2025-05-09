@@ -70,3 +70,40 @@ body, html, #root, .app-root {
     padding: 0;
   }
 }
+
+.device-banner {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: #2563eb;
+  color: #fff;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 1000;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.device-banner.mobile {
+  background: #22c55e;
+}
+.device-banner.desktop {
+  background: #2563eb;
+}
+
+@media (max-width: 700px) {
+  .device-banner {
+    font-size: 0.95rem;
+    padding: 8px 0;
+    border-radius: 0;
+  }
+  .app-root {
+    padding-top: 0;
+  }
+}

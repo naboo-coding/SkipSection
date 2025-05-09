@@ -64,10 +64,12 @@
     padding: 0 4px;
     flex-wrap: nowrap;
     overflow-x: auto;
+    position: center;
   }
   .stepper-step {
     font-size: 0.98rem;
     padding: 0 8px;
+    flex: 0 0 auto;
   }
   .stepper-label {
     font-size: 0.98rem;
@@ -75,5 +77,15 @@
   .stepper-divider {
     width: 18px;
     margin: 0 4px;
+  }
+  .header.mobile .stepper {
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+  }
+  .header.mobile .stepper-step {
+    scroll-snap-align: center;
+  }
+  .header.mobile .stepper-step.active {
+    /* Optionally, add extra style to highlight or center the active step */
   }
 } 

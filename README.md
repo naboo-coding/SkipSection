@@ -24,9 +24,7 @@ SkipSection is a single-page React application illustrating how to structure, de
 
 ## Demo
 
-A live demo can be viewed at: [https://your-app-domain.com](https://your-app-domain.com)
-
-Alternatively, run the app locally (see [Installation](#installation)).
+Run the app locally (see [Installation](#installation)).
 
 ## Features
 

@@ -6,18 +6,29 @@
   margin: 0 auto;
   width: 100%;
   max-width: 340px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   color: #fff;
   border: 1px solid #232323;
-  transition: transform 0.18s, box-shadow 0.18s, outline 0.18s;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              outline 0.2s ease,
+              border-color 0.3s ease;
   outline: none;
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 .skip-card:hover, .skip-card:focus-within, .skip-card:focus {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 6px 32px rgba(37,99,235,0.12);
-  outline: 2px solid #2563eb;
+  transform: translateY(-6px) scale(1.03);
+  box-shadow:
+    0 0 0 2px rgba(37,99,235,0.10),
+    0 0 12px 4px rgba(37,99,235,0.18),
+    0 0 32px 8px rgba(37,99,235,0.12),
+    0 6px 32px rgba(37,99,235,0.10);
+  outline: 2px solid rgba(37,99,235,0.8);
+  border-color: rgba(37,99,235,0.5);
 }
 
 .skip-card-image-wrapper {
@@ -27,36 +38,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .skip-card-image {
-  max-width: 90%;
-  max-height: 120px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 8px;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
+}
+
+.skip-card:hover .skip-card-image {
+  transform: scale(1.05);
 }
 
 .skip-card-warning {
   position: absolute;
   left: 12px;
   bottom: 12px;
-  background: #232323;
-  color: #ff5252;
+  background: rgba(35, 35, 35, 0.5) !important;
+  color: rgba(255, 82, 82, 0.85) !important;
   padding: 4px 10px;
   border-radius: 8px;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   font-weight: 500;
   margin-bottom: 4px;
   display: flex;
   align-items: center;
   gap: 4px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .skip-card-warning-road {
-  font-size: 0.65rem;
+  font-size: 0.70rem;
   padding: 5px 14px;
   border-radius: 14px;
-  color: #ffd600;
-  background: #232323;
+  color: rgba(255, 214, 0, 0.85) !important;
+  background: rgba(35, 35, 35, 0.5) !important;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   position: absolute;
@@ -75,8 +97,8 @@
 .skip-card-warning-heavy {
   top: 52px;
   left: 12px;
-  background: #232323;
-  color: #ff5252;
+  background: rgba(35, 35, 35, 0.5) !important;
+  color: rgba(255, 82, 82, 0.85) !important;
 }
 .skip-card-warning.skip-card-warning-road {
   left: auto !important;
@@ -87,13 +109,13 @@
   top: 48px;
   right: 12px;
   left: auto;
-  font-size: 0.82rem;
+  font-size: 0.70rem;
   padding: 5px 14px;
   border-radius: 14px;
   z-index: 1;
   position: absolute;
-  background: #232323;
-  color: #ff5252;
+  background: rgba(35, 35, 35, 0.5) !important;
+  color: rgba(255, 82, 82, 0.85) !important;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   display: flex;
@@ -106,29 +128,36 @@
   right: 12px !important;
   bottom: auto !important;
 }
-.skip-card-warning-road {
-  font-size: 0.88rem;
-  padding: 5px 14px;
-  border-radius: 14px;
-}
 
 .skip-card-content {
   padding: 22px 20px 18px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  transition: all 0.3s ease;
 }
 
 .skip-card-content h3 {
   margin: 0 0 8px 0;
   font-size: 1.35rem;
   font-weight: 800;
+  transition: all 0.2s ease;
+}
+
+.skip-card:hover .skip-card-content h3 {
+  transform: translateY(-2px);
+  color: #fff;
 }
 
 .skip-card-period {
   color: #b0b3b8;
   font-size: 1.05rem;
   margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.skip-card:hover .skip-card-period {
+  color: #d0d3d8;
 }
 
 .skip-card-price {
@@ -136,6 +165,13 @@
   font-size: 1.35rem;
   font-weight: 800;
   margin-bottom: 16px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
+}
+
+.skip-card:hover .skip-card-price {
+  transform: translateY(-3px) scale(1.05);
+  color: #3b82f6;
 }
 
 .skip-card-btn {
@@ -149,7 +185,10 @@
   font-size: 1.08rem;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: background 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   margin-top: 8px;
   display: flex;
   align-items: center;
@@ -158,12 +197,17 @@
   box-shadow: 0 2px 8px rgba(37,99,235,0.08);
   cursor: pointer;
   outline: none;
+  will-change: transform, box-shadow;
+  position: relative;
+  overflow: hidden;
 }
 .skip-card-btn:hover, .skip-card-btn:focus {
   background: #1741a6;
   color: #fff;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.18);
-  outline: 2px solid #22c55e;
+  transform: scale(1.05);
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.2),
+              0 0 12px rgba(37,99,235,0.2),
+              0 8px 16px rgba(0,0,0,0.1);
 }
 .skip-card-btn:active {
   background: #1741a6;
@@ -172,6 +216,12 @@
 
 .arrow {
   font-size: 1.2em;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-block;
+}
+
+.skip-card-btn:hover .arrow {
+  transform: translateX(4px);
 }
 
 @media (max-width: 700px) {
@@ -190,4 +240,16 @@
     font-size: 1rem;
     padding: 12px 0;
   }
+}
+
+/* Add glow to filter selection dropdown */
+.custom-dropdown:hover .custom-dropdown-selected,
+.custom-dropdown:focus-within .custom-dropdown-selected {
+  border: 2px solid #1741a6;
+  box-shadow:
+    0 0 0 4px rgba(37,99,235,0.18),
+    0 0 24px 10px rgba(37,99,235,0.32),
+    0 0 64px 24px rgba(37,99,235,0.18),
+    0 4px 32px rgba(37,99,235,0.18);
+  background: #232323;
 } 

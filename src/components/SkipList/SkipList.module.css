@@ -1,0 +1,60 @@
+.skipListContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 48px 16px;
+  background: transparent;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+}
+.skipListTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1741a6;
+  text-align: center;
+}
+.skipListDesc {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.skipListGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px 12px;
+  align-items: flex-start;
+}
+@media (max-width: 900px) {
+  .skipListContainer {
+    padding: 20px 4px 48px 4px;
+  }
+  .skipListGrid {
+    gap: 18px 8px;
+  }
+}
+@media (max-width: 600px) {
+  .skipListContainer {
+    padding: 10px 0 18px 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  /* Add extra bottom padding when summary bar is present */
+  .skipListContainer.withSummaryBar {
+    padding-bottom: 165px;
+  }
+  .skipListTitle {
+    font-size: 1.3rem;
+  }
+  .skipListDesc {
+    font-size: 1rem;
+  }
+  .skipListGrid {
+    grid-template-columns: 1fr;
+    gap: 14px 0;
+  }
+} 

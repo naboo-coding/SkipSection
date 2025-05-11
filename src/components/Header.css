@@ -1,6 +1,7 @@
 .header {
   background: #18191a;
   padding: 32px 0 0 0;
+  width: 100%;
 }
 
 .stepper {
@@ -12,6 +13,7 @@
   flex-wrap: wrap;
   overflow-x: auto;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 .stepper::-webkit-scrollbar {
   display: none;
@@ -26,8 +28,17 @@
   font-weight: 500;
   position: relative;
   padding: 0 16px;
-  transition: color 0.2s, font-weight 0.2s;
+  min-height: 48px;
+  transition: color 0.2s, font-weight 0.2s, background 0.2s;
   white-space: nowrap;
+  flex: 0 0 auto;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.stepper-step:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  z-index: 2;
 }
 
 .stepper-step.active {
@@ -54,9 +65,17 @@
   display: inline-block;
 }
 
+.stepper-scroll-arrow {
+  display: none;
+}
 @media (max-width: 700px) {
   .header {
     padding: 18px 0 0 0;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    position: relative;
   }
   .stepper {
     gap: 0;
@@ -64,12 +83,31 @@
     padding: 0 4px;
     flex-wrap: nowrap;
     overflow-x: auto;
-    position: center;
+    position: relative;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    background: #18191a;
+    min-height: 54px;
+    scroll-behavior: smooth;
   }
   .stepper-step {
     font-size: 0.98rem;
-    padding: 0 8px;
+    padding: 0 14px;
     flex: 0 0 auto;
+    min-width: 90px;
+    min-height: 44px;
+    scroll-snap-align: center;
+    touch-action: manipulation;
+    border-radius: 8px;
+  }
+  .stepper-step.active {
+    background: #232a3a;
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 2px 8px 0 rgba(37,99,235,0.08);
+    border-radius: 999px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
   .stepper-label {
     font-size: 0.98rem;
@@ -80,12 +118,42 @@
   }
   .header.mobile .stepper {
     justify-content: flex-start;
-    scroll-snap-type: x mandatory;
-  }
-  .header.mobile .stepper-step {
-    scroll-snap-align: center;
   }
   .header.mobile .stepper-step.active {
     /* Optionally, add extra style to highlight or center the active step */
+  }
+  .stepper-scroll-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 38px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 30;
+    border: none;
+    background: rgba(255,255,255,0.10);
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s, background 0.2s;
+    pointer-events: auto;
+    box-shadow: 0 2px 8px 0 rgba(24,25,26,0.08);
+  }
+  .stepper-scroll-arrow.left {
+    left: 0;
+    background: linear-gradient(to right, #18191a 80%, rgba(24,25,26,0));
+    justify-content: flex-start;
+    border-radius: 0;
+  }
+  .stepper-scroll-arrow.right {
+    right: 0;
+    background: linear-gradient(to left, #18191a 80%, rgba(24,25,26,0));
+    justify-content: flex-end;
+    border-radius: 0;
+  }
+  .stepper-scroll-arrow:active,
+  .stepper-scroll-arrow:hover {
+    background: rgba(37,99,235,0.12);
   }
 } 
